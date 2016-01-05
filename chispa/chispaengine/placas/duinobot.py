@@ -37,6 +37,29 @@ class Duinobot(object):
 
         self.comunicar_serial(cmd)
 
+    def prender_motor(self, motor=None, **kwargs):
+        #TODO:
+        #HAY QUE REHACER ESTA FUNCION
+        cmd = None
+
+        if motor is None:
+            print "No se especifico motor"
+            return None
+
+        if motor is 0:
+            if 'velocidad' not in kwargs:
+                cmd = "MOTOR 100 0"
+            else:
+                cmd = "MOTOR "+str(kwargs['velocidad'])+" 0"
+            
+        elif motor is 1:
+            if 'velocidad' not in kwargs:
+                cmd = "MOTOR 0 100"
+            else:
+                cmd = "MOTOR 0 "+str(kwargs['velocidad'])
+
+        self.comunicar_serial(cmd)
+
     def apagar_motores(self):
         cmd = "MOTOR 0 0"
         self.comunicar_serial(cmd)
