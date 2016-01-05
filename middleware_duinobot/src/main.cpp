@@ -29,6 +29,7 @@ void setup()
 			args = incomingData.substring(spacePos + 1);
 
 			if(cmd == "MOTOR") {
+				Serial.println("El CMD es MOTOR");
 				if(motor(args) != 0) {
 					Serial.println("Error en comando");
 					Serial.println(incomingData);
