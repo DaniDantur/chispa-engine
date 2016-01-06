@@ -1,4 +1,4 @@
-import cv2
+import time
 
 import placas
 import camaras
@@ -12,8 +12,10 @@ class Chispa(object):
         self.placas = placas.Placas()
         self.camaras = camaras.Camaras()
 
-    def esperar(self):
-        cv2.waitKey(25)
+    def esperar(self, espera=0.025, **kwargs):
+        #TODO: Convertir entre milisegundos y segundos, permitir parametros para cada uno
+        time.sleep(espera)
+        
 
 
 def prender():

@@ -14,5 +14,6 @@ class Imagen(object):
         self.modelo_de_colores = None
 
     def mostrar(self):
-        #TODO: Parametros para la ventana
+        #TODO: Parametros para la ventana, tiempo por defecto que sea configurable
         cv2.imshow("Chispa", self.imagen)
+        cv2.waitKey(25)
