@@ -3,7 +3,7 @@
 
 #include "motor.h"
 
-#define DEFAULT_SERIAL_TIMEOUT_MILLISECONDS 100
+#define DEFAULT_SERIAL_TIMEOUT_MILLISECONDS 1000
 
 String incomingData;
 String cmd;
@@ -34,8 +34,14 @@ void setup()
 					Serial.println("Error en comando");
 					Serial.println(incomingData);
 				}
-			} else {
+			} else if(cmd == "LED"){
+				Serial.println("El CMD tiene LED");
+				Serial.println(cmd);
+				Serial.println(args);
+			}
+			else {
 				Serial.println("Comando no reconocido");
+
 			}
 			
 			//Serial.println(cmd);
