@@ -9,10 +9,10 @@ class Duinobot(object):
     def __init__(self):
         self.puerto = "/dev/ttyACM0"
         self.baudios = 115200
-        self.conexion = serial.Serial(self.puerto, self.baudios)
         self.prendido = False
 
     def prender(self):
+        self.conexion = serial.Serial(self.puerto, self.baudios)
         self.prendido = True
         time.sleep(5)
         self.comunicar_serial("DATAALEATORIA")
@@ -24,7 +24,7 @@ class Duinobot(object):
             print "Ej: robot.prender()"
             return None
 
-        print "Envio "+cmd
+        #print "Envio "+cmd
         self.conexion.write(cmd)
 
     def prender_motores(self, **kwargs):
