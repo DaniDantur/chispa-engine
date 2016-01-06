@@ -1,6 +1,7 @@
 # chispa-engine
 Programá tus robots con Chispa.
-![Alt Text](https://github.com/raichuk/chispa-engine/raw/master/path/res/ejemplo.gif)
+
+![Código en vivo](https://raw.githubusercontent.com/raichuk/chispa-engine/master/res/ejemplo_1.gif)
 # Descripción
 Chispa es un framework compuesto por un middleware programado en C++ que 
 corre (actualmente) sobre un dispositivo Duinobot 2.3 y una API en Python
