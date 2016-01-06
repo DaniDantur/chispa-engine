@@ -16,4 +16,4 @@ class Imagen(object):
     def mostrar(self):
         #TODO: Parametros para la ventana, tiempo por defecto que sea configurable
         cv2.imshow("Chispa", self.imagen)
-        cv2.waitKey(25)
+        cv2.waitKey(1)
