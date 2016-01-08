@@ -9,12 +9,15 @@ int motor(String &args)
 		return -1;
 	}
 
-	String motor0Val = args.substring(0, separatorPos);
-	String motor1Val = args.substring(separatorPos + 1);
+    String motorId = args.substring(0, separatorPos);
+    String motorVal = args.substring(separatorPos + 1);
 
-	motor0.setPower(motor0Val.toInt());
-	motor1.setPower(motor1Val.toInt());
-
+    if(motorId == "0")
+	    motor0.setPower(motorVal.toInt());
+    else if(motorId == "1")
+	    motor1.setPower(motorVal.toInt());
+    else
+        return -1;
 
 
 	return ret;
