@@ -6,7 +6,6 @@ import chispaengine
 chispa = chispaengine.prender()
 
 robot = chispa.placas.Duinobot()
-
 robot.prender()
 #robot.prender_motores()
 #time.sleep(0.025)
