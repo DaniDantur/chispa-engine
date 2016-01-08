@@ -6,12 +6,11 @@ import chispaengine
 chispa = chispaengine.prender()
 
 robot = chispa.placas.Duinobot()
-
 robot.prender()
-#robot.prender_motores()
-#time.sleep(1)
-#robot.apagar_motores()
 
-robot.prender_motor(motor=0, velocidad=75)
+print "Encendido"
+robot.prender_motor(motor=0, velocidad=-50)
+chispa.esperar(0.50)
+robot.prender_motor(motor=0, velocidad=0)
 
 
