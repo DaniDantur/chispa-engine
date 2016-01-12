@@ -9,3 +9,5 @@ que pretende, espiritualmente hablando, usar el estilo de Pilas Engine, buscando
 simplicidad a la hora de dar los primeros pasos en robótica y computación visual
 #Status
 pre-alpha
+
+Todo el tiempo puede cambiar la API y todo el tiempo se están agregando partes nuevas para más soporte.
