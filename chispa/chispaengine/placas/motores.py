@@ -5,15 +5,9 @@ class Motor(object):
 
     def __init__(self, indice):
         self.indice = str(indice)
-        self.motor_ocupado = False
         self.velocidad = 0
 
     def prender_motor(self, velocidad):
-        #if self.motor_ocupado == True:
-        #    print "El motor " + self.indice + " esta ocupado"
-        #    return
-
-        self.motor_ocupado = True
         self.velocidad = velocidad
 
         return "MOTOR " + self.indice + " " +  self.velocidad
