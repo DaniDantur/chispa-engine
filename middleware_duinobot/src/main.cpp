@@ -3,7 +3,7 @@
 
 #include "motor.h"
 
-#define DEFAULT_SERIAL_TIMEOUT_MILLISECONDS 1000
+#define DEFAULT_SERIAL_TIMEOUT_MILLISECONDS 100
 
 String incomingData;
 String cmd;

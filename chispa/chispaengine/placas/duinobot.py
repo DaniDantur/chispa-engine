@@ -2,7 +2,7 @@ import serial
 import time
 
 import motores
-import timers
+#import timers
 
 class Duinobot(object):
     """
@@ -13,8 +13,9 @@ class Duinobot(object):
         self.puerto = "/dev/ttyACM0"
         self.baudios = 115200
         self.prendido = False
-        self.motor0 = motores.Motor()
-        self.motor1 = motores.Motor()
+        #self.motor0 = motores.Motor(0)
+        #self.motor1 = motores.Motor(1)
+        self.motores = [motores.Motor(0), motores.Motor(1)]
 
     def prender(self):
         self.conexion = serial.Serial(self.puerto, self.baudios)
@@ -29,24 +30,22 @@ class Duinobot(object):
             print "Ej: robot.prender()"
             return None
 
-        #print "Envio "+cmd
-        time.sleep(0.050)
+        print "Envio "+cmd
+        time.sleep(0.25)
         self.conexion.write(cmd)
 
-    def prender_motores(self, **kwargs):
-        cmd = None
-
-
-        self.comunicar_serial(cmd)
-
-    def prender_motor(self, motor=None, **kwargs):
+    def prender_motor(self, motor=None, velocidad=None):
         #TODO:
         #HAY QUE REHACER ESTA FUNCION
         cmd = None
 
-        timers.timeout(self.apagar_motores, seconds=kwargs['tiempo'])
+        #print "Velocidad " + str(velocidad) + "\t" + str(self.motores[motor].velocidad)
 
-    def apagar_motores(self):
-        cmd = "MOTOR 0 0"
+        if(int(velocidad) == int(self.motores[motor].velocidad)):
+            #print "Las velocidades son las mismas, no envio"
+            return
+
+        cmd = self.motores[motor].prender_motor(str(velocidad))
         self.comunicar_serial(cmd)
-        self.motor_ocupado = False
+
+        #timers.timeout(self.apagar_motores, seconds=kwargs['tiempo'])

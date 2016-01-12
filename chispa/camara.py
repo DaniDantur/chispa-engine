@@ -7,33 +7,45 @@ chispa = chispaengine.prender()
 camara = chispa.camaras.Netbook()
 camara.prender()
 
-while(True):
+robot = chispa.placas.Duinobot()
+robot.prender()
 
+colores = ["verde", "rojo"]
+
+hay_objeto_de_color = False
+
+while(True):
     imagen = camara.traer_imagen()
     imagen.mostrar()
 
-    recorte = imagen.recortar([300, 500], [300, 450])
+    recorte = imagen.recortar([80, 600], [300, 450])
     recorte.mostrar("Recorte")
 
-    #objetos = recorte.buscar_objetos_por_color("verde")
-    #mascara, objetos = recorte.buscar_objetos_por_color("rojo")
-    #mascara.mostrar("Mascara")
-#    if(objetos is not None):
-        #print "Encontre " + str(objetos.cantidad)
+    for color in colores:
 
-        #for objeto in objetos:
-        #    print objeto.area
+        #Si encontre un objeto en la cinta, sigo buscando objetos solo de ese color
+        if(hay_objeto_de_color):
+            color = hay_objeto_de_color
+    
+        print "Buscando objetos de " + color
 
-#        objeto_mas_grande = objetos.mas_grande()
+        if(color == "rojo"):
+            velocidad = -100
+        elif(color == "verde"):
+            velocidad = 100
 
-#        imagen = camara.traer_imagen()
-#        imagen.mostrar()
+        mascara, objetos = recorte.buscar_objetos_por_color(color)
+        mascara.mostrar("Mascara")
 
-        #robot.prender_motor(motor=barrera, velocidad=-50, tiempo=0.50)
-#        robot.prender_motor(motor=cinta, velocidad=100, tiempo=2)
+        if(objetos is not None):
+            hay_objeto_de_color = color
+            print "Encontre objetos de color " + hay_objeto_de_color
 
-        #print "El area mas grande es " + str(objeto_mas_grande.area)
+            robot.prender_motor(motor=0, velocidad=velocidad)
 
+        else:
+            hay_objeto_de_color = None
+            robot.prender_motor(motor=0, velocidad=0)
 
     chispa.esperar(0.025)
 
