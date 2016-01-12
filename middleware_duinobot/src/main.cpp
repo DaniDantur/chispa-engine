@@ -4,7 +4,7 @@
 #include "motor.h"
 #include "servo.h"
 
-#define DEFAULT_SERIAL_TIMEOUT_MILLISECONDS 1000
+#define DEFAULT_SERIAL_TIMEOUT_MILLISECONDS 100
 #define MAX_SERVOS 2
 
 String incomingData;
