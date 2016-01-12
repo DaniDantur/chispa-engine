@@ -2,17 +2,24 @@
 #include <PingIRReceiver.h>
 
 #include "motor.h"
+#include "servo.h"
 
-#define DEFAULT_SERIAL_TIMEOUT_MILLISECONDS 100
+#define DEFAULT_SERIAL_TIMEOUT_MILLISECONDS 1000
+#define MAX_SERVOS 2
 
 String incomingData;
 String cmd;
 String args;
+SERVO servos[MAX_SERVOS];
+
 
 void setup()
 {
 	initBoard();
 	Serial.setTimeout(DEFAULT_SERIAL_TIMEOUT_MILLISECONDS);
+
+    servos[0].pin = -1;
+    servos[1].pin = -1;
 
 	while(1) {
 
@@ -34,12 +41,16 @@ void setup()
 					Serial.println("Error en comando");
 					Serial.println(incomingData);
 				}
-			} else if(cmd == "LED"){
+			} else if(cmd == "LED") {
 				Serial.println("El CMD tiene LED");
 				Serial.println(cmd);
 				Serial.println(args);
-			}
-			else {
+			} else if(cmd == "SERVO") {
+                if(servo(args, servos) != 0) {
+                	Serial.println("Error en comando");
+					Serial.println(incomingData);
+                }
+            } else {
 				Serial.println("Comando no reconocido");
 
 			}

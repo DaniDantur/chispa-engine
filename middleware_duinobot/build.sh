@@ -82,6 +82,19 @@ avr-g++ -c -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -mmcu=a
 	-I"/opt/minibloq/v0.84.0/hard/DuinoBot.v2.3.CDC/lib" \
 	-I"$MIDDLEWARE_PATH/src" \
 	-I"$MIDDLEWARE_PATH/output" \
+	-I"$MIDDLEWARE_PATH/output" \
+	-I"/opt/minibloq/v0.84.0/libs/Arduino/Servo/v1.2" \
+	"$MIDDLEWARE_PATH/src/servo.cpp" \
+	-o "$MIDDLEWARE_PATH/output/servo.cpp.o"
+
+avr-g++ -c -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -mmcu=atmega1284p -DF_CPU=16000000L -DARDUINO=154 \
+	-I"/opt/minibloq/v0.84.0/lang/avrlinux/i386/v4.3.5/bin" \
+	-I"/opt/minibloq/v0.84.0/cores/Arduino.v1.5.4.r2/avr" \
+	-I"/opt/minibloq/v0.84.0/cores/Arduino.v1.5.4.r2/avr/avr-libc" \
+	-I"/opt/minibloq/v0.84.0/cores/Arduino.v1.5.4.r2/avr/variants/duinobot.v2.x" \
+	-I"/opt/minibloq/v0.84.0/hard/DuinoBot.v2.3.CDC/lib" \
+	-I"$MIDDLEWARE_PATH/src" \
+	-I"$MIDDLEWARE_PATH/output" \
 	-I"/opt/minibloq/v0.84.0/libs/Arduino/miniBloq/v1.0" \
 	-I"/opt/minibloq/v0.84.0/libs/Arduino/PingIRReceiver/v1.0"\
 	-I"/opt/minibloq/v0.84.0/libs/Arduino/IRRemote/v1.2" \
@@ -112,6 +125,7 @@ avr-g++ -c -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -mmcu=a
 	-I"/opt/minibloq/v0.84.0/libs/Arduino/IRRanger/v1.0" \
 	-I"/opt/minibloq/v0.84.0/libs/Arduino/DCMotor/v1.0" \
 	-I"$MIDDLEWARE_PATH/output/motor.cpp.o" \
+	-I"$MIDDLEWARE_PATH/output/servo.cpp.o" \
 	"$MIDDLEWARE_PATH/src/$CPP_MAIN" \
 	-o "$MIDDLEWARE_PATH/output/$CPP_MAIN".o
 
@@ -123,8 +137,10 @@ avr-gcc -Os -Wl,--gc-sections -mmcu=atmega1284p \
 	"$MIDDLEWARE_PATH/output/toneDelay.cpp.o" \
 	"$MIDDLEWARE_PATH/output/initBoard.cpp.o" \
 	"$MIDDLEWARE_PATH/output/motor.cpp.o" \
+	"$MIDDLEWARE_PATH/output/servo.cpp.o" \
 	"$MIDDLEWARE_PATH/output/$CPP_MAIN".o \
 	"/opt/minibloq/v0.84.0/cores/Arduino.v1.5.4.r2/avr/obj/mega1284.a" -L ./ -lm
+
 
 avr-objcopy -O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load \
 	--no-change-warnings \
