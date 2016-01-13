@@ -19,7 +19,7 @@ while(True):
     imagen = camara.traer_imagen()
     imagen.mostrar("Camara")
 
-    zona_elegir_color = imagen.recortar([80, 200], [300, 450])
+    zona_elegir_color = imagen.recortar([80, 200], [200, 450])
     zona_elegir_color.mostrar("Zona para elegir color")
 
 
@@ -38,15 +38,16 @@ while(True):
             hay_objeto_de_color = color
 
             if(hay_objeto_de_color == "verde"):
-                angulo = 90
+                angulo = 60
             elif(hay_objeto_de_color == "rojo"):
-                angulo = 180
+                angulo = 120
 
             robot.prender_servo(servo=0, angulo=angulo)
+            robot.prender_servo(servo=1, angulo=90)
 
         else:
             hay_objeto_de_color = None
-            robot.prender_servo(servo=0, angulo=0)
+            robot.prender_servo(servo=1, angulo=1)
 
 
     chispa.esperar(0.025)
