@@ -9,9 +9,10 @@ class Camaras(object):
     """
 
     def __init__(self):
-        self.mbp = marblepoint.Netbook()
+        self.mbp = None
 
     def Netbook(self):
+        self.mbp = marblepoint.Netbook()
         return self.mbp
 
 
