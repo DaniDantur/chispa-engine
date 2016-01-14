@@ -14,8 +14,6 @@ class Duinobot(object):
         self.puerto = "/dev/ttyACM0"
         self.baudios = 115200
         self.prendido = False
-        #self.motor0 = motores.Motor(0)
-        #self.motor1 = motores.Motor(1)
         self.motores = [motores.Motor(0), motores.Motor(1)]
         self.servos = [servos.Servo(0), servos.Servo(1)]
 
