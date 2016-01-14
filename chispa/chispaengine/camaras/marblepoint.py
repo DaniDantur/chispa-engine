@@ -25,6 +25,7 @@ class Netbook(object):
     def mostrar_controles(self):
         #TODO: Poner nombre de ventana en variable
         #TODO: Escribir texto sobre imagen, avisando que es la imagen original
+        #TODO: Agregar mas controles
         (ok, frame) = self.camara.read()
 
         brillo_actual = int(self.camara.get(cv2.CAP_PROP_BRIGHTNESS) * 100)
