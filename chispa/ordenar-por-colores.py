@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+#Programa pensado para el Tapitabot
+
 import time
 import chispaengine
 
