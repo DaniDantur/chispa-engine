@@ -1,9 +1,8 @@
 import serial
 import time
 
-import motores
-import servos
-#import timers
+from chispaengine.partes_robot.motores import dc as motores
+from chispaengine.partes_robot.motores import servos 
 
 class Duinobot(object):
     """

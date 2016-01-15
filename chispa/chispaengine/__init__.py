@@ -1,7 +1,8 @@
 import time
 
-import placas
-import camaras
+
+from partes_robot import placas
+from partes_robot import camaras
 
 class Chispa(object):
     """

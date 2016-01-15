@@ -12,7 +12,6 @@ class Motor(object):
 
         return "MOTOR " + self.indice + " " +  self.velocidad
         
-
     def apagar_motor(self):
         if self.indice == 0:
             return "MOTOR " + velocidad + " 0"

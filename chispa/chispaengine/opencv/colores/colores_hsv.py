@@ -1,4 +1,4 @@
-class Colores(object):
+class ColoresHSV(object):
     """
     DOCUMENTAR
     """

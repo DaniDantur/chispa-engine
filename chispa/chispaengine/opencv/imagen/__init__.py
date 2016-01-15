@@ -1,7 +1,7 @@
 import cv2
 
-import contornos as objetos
-import umbrales_colores_objeto as colores
+from chispaengine.opencv import contornos as objetos
+from chispaengine.opencv.colores import colores_hsv as colores
 
 class Imagen(object):
     """
@@ -16,7 +16,7 @@ class Imagen(object):
         self.cantidad_de_canales = None
         self.modelo_de_colores = None
         self.__hay_zona = False
-        self.__tabla_de_colores = colores.Colores()
+        self.__tabla_de_colores = colores.ColoresHSV()
         self.__zona_puntos = []
 
     def seleccionar_zona(self):
