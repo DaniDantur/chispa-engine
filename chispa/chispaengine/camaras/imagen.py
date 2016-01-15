@@ -15,7 +15,7 @@ class Imagen(object):
         self.alto = None
         self.cantidad_de_canales = None
         self.modelo_de_colores = None
-        self.hay_zona = False
+        self.__hay_zona = False
         self.__tabla_de_colores = colores.Colores()
         self.__zona_puntos = []
 
@@ -29,6 +29,7 @@ class Imagen(object):
         #TODO: Poner todos los valores en constantes
         #TODO: Colores y anchos parametrizables
         #TODO: Hacer que el cuadrado se actualice mientras uno mueve el mouse
+        #TODO: Las zonas se pueden hacer solo de izquierda a derecha y de arriba a abajo
         if ev != cv2.EVENT_LBUTTONDOWN and ev != cv2.EVENT_LBUTTONUP:
             return
 
@@ -43,7 +44,10 @@ class Imagen(object):
         if len(self.__zona_puntos) == 2:
             cv2.rectangle(self.imagen, self.__zona_puntos[0], self.__zona_puntos[1], (0, 255, 0), 2)
             cv2.imshow("Seleccionar zona", self.imagen)
-            self.hay_zona = self.__zona_puntos
+            self.__hay_zona = self.__zona_puntos
+
+    def hay_zona(self):
+        return self.__hay_zona
 
 
     def mostrar(self, titulo="Chispa"):

@@ -15,11 +15,12 @@ while(True):
     imagen = camara.traer_imagen()
     imagen.mostrar()
 
-    if imagen_inicial.hay_zona:
+    coordenadas = imagen_inicial.hay_zona()
+    if coordenadas:
         print "Tenemos zona"
 
-        punto1 = imagen_inicial.hay_zona[0]
-        punto2 = imagen_inicial.hay_zona[1]
+        punto1 = coordenadas[0]
+        punto2 = coordenadas[1]
 
         zona = imagen.recortar(punto1, punto2)
         zona.mostrar("Recorte")
