@@ -1,4 +1,5 @@
 import time
+import cv2
 
 
 from partes_robot import placas
@@ -15,6 +16,7 @@ class Chispa(object):
 
     def esperar(self, espera=0.025, **kwargs):
         #TODO: Convertir entre milisegundos y segundos, permitir parametros para cada uno
+        cv2.waitKey(1)
         time.sleep(espera)
 
 

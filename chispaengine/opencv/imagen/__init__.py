@@ -54,7 +54,6 @@ class Imagen(object):
         #TODO: Parametros para la ventana, tiempo por defecto que sea configurable
         #TODO: Deberia usar de titulo el nombre del objeto
         cv2.imshow(titulo, self.imagen)
-        cv2.waitKey(1)
     
     def recortar(self, pt1, pt2):
         #TODO: Un solo parametro que traiga ambos puntos
