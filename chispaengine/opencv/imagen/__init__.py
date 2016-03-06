@@ -1,7 +1,8 @@
 import cv2
 
 from chispaengine.opencv import contornos as objetos
-from chispaengine.opencv.colores import colores_hsv as colores
+from chispaengine.opencv.colores import colores_hsv as coloresHSV
+from chispaengine.opencv.colores import colores_bgr as coloresBGR
 
 class Imagen(object):
     """
@@ -16,7 +17,8 @@ class Imagen(object):
         self.cantidad_de_canales = None
         self.modelo_de_colores = None
         self.__hay_zona = False
-        self.__tabla_de_colores = colores.ColoresHSV()
+        self.__tabla_de_coloresHSV = coloresHSV.ColoresHSV()
+        self.__tabla_de_coloresBGR = coloresBGR.ColoresBGR()
         self.__zona_puntos = []
 
     def seleccionar_zona(self):
@@ -66,12 +68,12 @@ class Imagen(object):
         #TODO: Que se pueda pasar por parametro un color si no existe en la tabla
         #TODO: Definir como se van a devolver los valores
 
-        if color not in self.__tabla_de_colores.colores:
+        if color not in self.__tabla_de_coloresHSV.colores:
             print "No se encuentra "+ color +" en la tabla de colores"
             return
 
-        min_color = self.__tabla_de_colores.colores[color][0]
-        max_color = self.__tabla_de_colores.colores[color][1]
+        min_color = self.__tabla_de_coloresHSV.colores[color][0]
+        max_color = self.__tabla_de_coloresHSV.colores[color][1]
 
         color_minimo = (min_color[0], min_color[1], min_color[1])
         color_maximo = (max_color[0], max_color[1], max_color[1])
@@ -88,3 +90,11 @@ class Imagen(object):
 
         return Imagen(mascara), objetos.Contornos(cnts)
         
+    def dibujar_caja(self, caja, color):
+        x = caja[0]
+        y = caja[1]
+        w = caja[2]
+        h = caja[3]
+
+        color_a_pintar = self.__tabla_de_coloresBGR.colores[color]
+        cv2.rectangle(self.imagen,(x,y),(x+w,y+h), color_a_pintar, 2)
