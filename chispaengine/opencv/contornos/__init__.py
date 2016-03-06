@@ -11,6 +11,9 @@ class ContornoUnico(object):
         self.objeto = contorno
         self.area = cv2.contourArea(self.objeto)
 
+    def encuadrar(self):
+        return cv2.boundingRect(self.objeto)
+
 
 class Contornos(object):
     """
